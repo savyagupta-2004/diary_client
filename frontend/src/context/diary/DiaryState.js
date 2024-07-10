@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import diaryContext from "./diaryContext";
 
 const DiaryState = (props) => {
   const host = "http://localhost:5000";
-  const diariesInitial = [];
-  const [diaries, setdiary] = useState(diariesInitial);
+  const [diaries, setDiaries] = useState([]);
 
-  //fetching all diaries
+  useEffect(() => {
+    fetchalldiary();
+  }, []);
+
+  // Fetch all diaries
   const fetchalldiary = async () => {
     const response = await fetch(`${host}/api/diary/fetchdiary`, {
       method: "GET",
@@ -16,11 +19,10 @@ const DiaryState = (props) => {
       },
     });
     const json = await response.json();
-
-    setdiary(json);
+    setDiaries(json);
   };
 
-  //add Diary
+  // Add Diary
   const adddiary = async (title, description, tag) => {
     const response = await fetch(`${host}/api/diary/addiary`, {
       method: "POST",
@@ -31,13 +33,13 @@ const DiaryState = (props) => {
       body: JSON.stringify({ title, description, tag }),
     });
     const json = await response.json();
-    console.log(json);
-    setdiary(diaries.concat(json));
+    console.log("Diary added:", json);
+    setDiaries((prevDiaries) => [...prevDiaries, json]);
   };
 
-  //Delete diary
+  // Delete diary
   const deletediary = async (id) => {
-    console.log("deleting diary with id" + id);
+    console.log("Deleting diary with id", id);
     const response = await fetch(`${host}/api/diary/deletediary/${id}`, {
       method: "DELETE",
       headers: {
@@ -46,13 +48,12 @@ const DiaryState = (props) => {
       },
     });
     const json = await response.json();
-    console.log(json);
-    setdiary(
-      diaries.filter((tempdiary) => {
-        return tempdiary._id !== id;
-      })
+    console.log("Diary deleted:", json);
+    setDiaries((prevDiaries) =>
+      prevDiaries.filter((tempDiary) => tempDiary._id !== id)
     );
   };
+
   return (
     <diaryContext.Provider
       value={{ diaries, adddiary, deletediary, fetchalldiary }}

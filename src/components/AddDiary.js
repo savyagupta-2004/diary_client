@@ -7,17 +7,15 @@ const AddDiary = (props) => {
   const [diary, setDiary] = useState({
     title: "",
     description: "",
-    tag: "default",
   });
 
   const handleAddDiary = (e) => {
     e.preventDefault();
-    adddiary(diary.title, diary.description, diary.tag);
+    adddiary(diary.title, diary.description);
     props.showAlert("Diary added successfully", "success");
     setDiary({
       title: "",
       description: "",
-      tag: "",
     });
   };
 

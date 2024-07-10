@@ -21,14 +21,14 @@ const DiaryState = (props) => {
   };
 
   //add Diary
-  const adddiary = async (title, description, tag) => {
+  const adddiary = async (title, description) => {
     const response = await fetch(`${host}/api/diary/addiary`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "auth-token": localStorage.getItem("token"),
       },
-      body: JSON.stringify({ title, description, tag }),
+      body: JSON.stringify({ title, description }),
     });
     const json = await response.json();
     console.log(json);

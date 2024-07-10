@@ -7,7 +7,7 @@ const AddDiary = (props) => {
   const [diary, setDiary] = useState({
     title: "",
     description: "",
-    tag: "default",
+    tag: "default", // Ensure tag has a default value
   });
 
   const handleAddDiary = (e) => {
@@ -17,7 +17,7 @@ const AddDiary = (props) => {
     setDiary({
       title: "",
       description: "",
-      tag: "",
+      tag: "default", // Reset to the default value
     });
   };
 
@@ -56,6 +56,20 @@ const AddDiary = (props) => {
             value={diary.description}
             onChange={handleOnChange}
             minLength={5}
+            required
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="tag" className="form-label">
+            Tag
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            id="tag"
+            name="tag"
+            value={diary.tag}
+            onChange={handleOnChange}
             required
           />
         </div>
