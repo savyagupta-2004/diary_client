@@ -11,7 +11,7 @@ const Login = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("https://diary-backend-d313.vercel.app/api/auth/login", {
+    const response = await fetch("https://diary-backend-alpha.vercel.app/api/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
