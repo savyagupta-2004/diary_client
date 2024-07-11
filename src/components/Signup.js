@@ -14,7 +14,7 @@ const Signup = (props) => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:5000/api/auth/CreateUser", {
+    const response = await fetch("diary-backend-d313.vercel.app/api/auth/CreateUser", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
