@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import diaryContext from "./diaryContext";
 
 const DiaryState = (props) => {
-  const host = "http://localhost:5000";
+  const host = "https://diary-backend-alpha.vercel.app";
   const diariesInitial = [];
   const [diaries, setdiary] = useState(diariesInitial);
 

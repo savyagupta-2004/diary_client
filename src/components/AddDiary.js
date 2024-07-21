@@ -25,7 +25,8 @@ const AddDiary = (props) => {
 
   return (
     <div className="container my-5">
-      <h2 className="text-center mb-4">Add Diary</h2>
+      <h1 className="text-center mb-4">Add Diary</h1>
+
       <form onSubmit={handleAddDiary}>
         <div className="mb-3">
           <label htmlFor="title" className="form-label">

@@ -24,7 +24,7 @@ const Diaries = (props) => {
   return (
     <div className="container my-5">
       <AddDiary showAlert={showAlert} />
-      <h2 className="text-center my-3">Your Diaries</h2>
+      <h1 className="text-center my-3">Your Diaries</h1>
       <div className="row">
         {diaries.length === 0 && (
           <p className="text-center">

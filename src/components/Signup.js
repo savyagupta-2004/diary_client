@@ -14,17 +14,20 @@ const Signup = (props) => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:5000/api/auth/CreateUser", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: creds.name,
-        email: creds.email,
-        password: creds.password,
-      }),
-    });
+    const response = await fetch(
+      "https://diary-backend-alpha.vercel.app/api/auth/CreateUser",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: creds.name,
+          email: creds.email,
+          password: creds.password,
+        }),
+      }
+    );
     const json = await response.json();
     console.log(json);
     if (json.success) {
